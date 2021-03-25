@@ -5,6 +5,8 @@ const csurf = require('csurf');
 const helmet = require('helmet');
 const cookieParser = require('cookie-parser');
 
+const routes = require('./routes');
+
 const { environment } = require('./config');
 const isProduction = environment === 'production';
 
@@ -26,12 +28,7 @@ app.use(helmet({
 }));
 
 //setting csurf to use cookies.
-app.use(
-  csurf({
-    cookie: {
-      secure: isProduction,
-      sameSite: isProduction && "Lax",
-      httpOnly: true,
-    }
-  })
-);
+app.use(csurf({cookie: {secure: isProduction, sameSite: isProduction && "Lax", httpOnly: true} }));
+app.use(routes);
+
+module.exports = app;
