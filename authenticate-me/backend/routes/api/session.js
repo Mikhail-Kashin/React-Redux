@@ -1,15 +1,30 @@
 const express = require('express')
 const asyncHandler = require('express-async-handler');
+const { check } = require('express-validator');
 
 const { setTokenCookie, restoreUser } = require('../../utils/auth');
 const { User } = require('../../db/models');
+const { handleValidationErrors } = require('../../utils/validation');
+
 
 const router = express.Router();
 
 
 
-//logs user pulls cred. and pass. from body. if invalid throws errors.
-router.post( '/', asyncHandler(async (req, res, next) => {
+// Checks keys for req.body.password and credential.
+const validateLogin = [
+  check('credential')
+    .exists({ checkFalsy: true })
+    .notEmpty()
+    .withMessage('Please provide a valid email or username.'),
+  check('password')
+    .exists({ checkFalsy: true })
+    .withMessage('Please provide a password.'),
+  handleValidationErrors,
+];
+
+//LOG IN FUNCTION logs user in; pulls cred. and pass. from body. if invalid throws errors.
+router.post( '/', validateLogin, asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
     const user = await User.login({ credential, password });
@@ -28,6 +43,31 @@ router.post( '/', asyncHandler(async (req, res, next) => {
       user,
     });
   }),
+);
+
+//LOG OUT FUNCTION logs user out by removing the token cookie from response
+//and returning a success to json letting it know logout was good.
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
+
+//RESTORE USER FUNCTION. will return session user if key for user is found in JSON.
+//if not found will return empty object.
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json({
+        user: user.toSafeObject()
+      });
+    } else return res.json({});
+  }
 );
 
 
