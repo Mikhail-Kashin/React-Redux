@@ -40,5 +40,21 @@ router.delete(
   }
 );
 
+//RESTORE USER FUNCTION. will return session user if key for user is found in JSON.
+//if not found will return empty object.
+router.get(
+  '/',
+  restoreUser,
+  (req, res) => {
+    const { user } = req;
+    if (user) {
+      return res.json({
+        user: user.toSafeObject()
+      });
+    } else return res.json({});
+  }
+);
+
+
 
 module.exports = router;
