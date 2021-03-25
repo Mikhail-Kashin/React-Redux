@@ -8,7 +8,7 @@ const router = express.Router();
 
 
 
-//logs user pulls cred. and pass. from body. if invalid throws errors.
+//LOG IN FUNCTION logs user in; pulls cred. and pass. from body. if invalid throws errors.
 router.post( '/', asyncHandler(async (req, res, next) => {
     const { credential, password } = req.body;
 
@@ -30,6 +30,15 @@ router.post( '/', asyncHandler(async (req, res, next) => {
   }),
 );
 
+//LOG OUT FUNCTION logs user out by removing the token cookie from response
+//and returning a success to json letting it know logout was good.
+router.delete(
+  '/',
+  (_req, res) => {
+    res.clearCookie('token');
+    return res.json({ message: 'success' });
+  }
+);
 
 
 module.exports = router;
