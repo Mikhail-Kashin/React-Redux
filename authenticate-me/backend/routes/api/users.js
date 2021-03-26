@@ -14,30 +14,41 @@ const router = express.Router();
 //validations that will ensure signup fields are properly entered and formated.
 const validateSignup = [
   check('email')
+    .trim()
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.'),
   check('username')
+    .trim()
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
     .withMessage('Please provide a username with at least 4 characters.'),
   check('username')
+    .trim()
     .not()
     .isEmail()
     .withMessage('Username cannot be an email.'),
   check('password')
+    .trim()
     .exists({ checkFalsy: true })
     .isLength({ min: 6 })
     .withMessage('Password must be 6 characters or more.'),
+  check('confirmpassword')
+    .trim()
+    .exists({ checkFalsy: true })
+    .custom (async (confirmpassword, {req}) => {
+      const password = req.body.password
+      if (password !== confirmpassword) throw new Error('Passwords must match!')
+    }),
   handleValidationErrors,
 ];
 
 // SIGN UP FUNCTION signs user up calling the sign up static method defined in USER model.
 // if user is created the it sets the cookie and returns JSON response with user info.
 // else it will error into sequelize validation
-router.post( '', validateSignup, asyncHandler(async (req, res) => {
-    const { email, password, username } = req.body;
-    const user = await User.signup({ email, username, password });
+router.post( '/', validateSignup, asyncHandler(async (req, res) => {
+    const { email, password, username, confirmpassword } = req.body;
+    const user = await User.signup({ email, password, username, confirmpassword });
 
     await setTokenCookie(res, user);
 
