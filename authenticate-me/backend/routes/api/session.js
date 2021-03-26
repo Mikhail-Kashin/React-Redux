@@ -47,9 +47,7 @@ router.post( '/', validateLogin, asyncHandler(async (req, res, next) => {
 
 //LOG OUT FUNCTION logs user out by removing the token cookie from response
 //and returning a success to json letting it know logout was good.
-router.delete(
-  '/',
-  (_req, res) => {
+router.delete('/', (_req, res) => {
     res.clearCookie('token');
     return res.json({ message: 'success' });
   }
@@ -57,10 +55,7 @@ router.delete(
 
 //RESTORE USER FUNCTION. will return session user if key for user is found in JSON.
 //if not found will return empty object.
-router.get(
-  '/',
-  restoreUser,
-  (req, res) => {
+router.get( '/', restoreUser, (req, res) => {
     const { user } = req;
     if (user) {
       return res.json({
