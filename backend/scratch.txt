@@ -5,3 +5,5 @@ npx sequelize model:generate --name User --attributes username:string,email:stri
 
 npx sequelize seed:generate --name demo-user
 
+
+test
