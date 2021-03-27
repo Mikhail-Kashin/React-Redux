@@ -3,6 +3,8 @@ import * as sessionActions from '../../store/session';
 import { useDispatch, useSelector } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 
+import './SignupForm.css';
+
 
 
 function SignupFormPage() {
@@ -29,47 +31,51 @@ function SignupFormPage() {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className='SignupFormPage'>
       <ul>
         {errors.map((err, idx) => <li key={idx}>{err}</li>)}
       </ul>
-      <label>
-        Enter Email
+      <label className='emailSignup'>
+        Email
         <input
           type='text'
           value={email}
           onChange={(e) => setEmail(e.target.value)}
           required
+          placeholder='Email'
           />
       </label>
-      <label>
-        Enter Username
+      <label className='UsernameSignup'>
+        Username
         <input
         type='text'
+        placeholder='Username'
         value={username}
         onChange={(e) => setUsername(e.target.value)}
         required
         />
       </label>
-      <label>
+      <label className='passwordSignup'>
         Password
         <input
           type="password"
+          placeholder='Password'
           value={password}
           onChange={(e) => setPassword(e.target.value)}
           required
         />
       </label>
-      <label>
+      <label className='confirmPasswordSignup'>
         Confirm Password
         <input
           type="password"
+          placeholder='Confirm Password'
           value={confirmpassword}
           onChange={(e) => setConfirmpassword(e.target.value)}
           required
         />
-        </label>
-        <button type="submit">Sign Up!</button>
+        </label >
+        <button type="submit" className='buttonSignup'>Sign Up!</button>
     </form>
   )
 
