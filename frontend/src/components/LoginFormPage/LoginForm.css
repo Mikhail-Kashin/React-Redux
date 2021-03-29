@@ -1,0 +1,56 @@
+
+.usernameLogin{
+  grid-area: username;
+}
+
+.passwordLogin{
+  grid-area: password;
+}
+
+.btnLogin{
+  grid-area: loginBtn;
+  background: rgb(0,161,198);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  text-indent: 0px;
+}
+
+.btnLogin:hover{
+  box-shadow: 1px 1px 3px black;
+}
+
+.btnLogin:hover,
+link:hover{
+  text-shadow: 1px 1px 3px black;
+}
+
+
+.loginFormPage{
+  display: grid;
+  grid-template-columns: 1fr auto 1fr ;
+  grid-template-rows: auto;
+  grid-template-areas:
+  '. username . '
+  '. password . '
+  '. loginBtn . ';
+}
+
+.loginFormPage input {
+  width: 100%;
+  clear: both;
+  background-color: rgb(245, 243, 243);
+  font-size: 14px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 4px;
+}
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 1s 1s ease;
+  opacity: 0;
+}

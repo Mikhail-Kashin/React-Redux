@@ -32,6 +32,7 @@
 .buttonSignup:hover{
   box-shadow: 1px 1px 3px black;
 }
+
 .buttonSignup:hover,
 link:hover{
   text-shadow: 1px 1px 3px black;
