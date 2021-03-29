@@ -1,15 +1,22 @@
 const router = require('express').Router();
-const asyncHandler = require('express-async-handler');
-const { setTokenCookie } = require('../../utils/auth.js');
-const { User } = require('../../db/models');
-const { restoreUser } = require('../../utils/auth.js');
-const { requireAuth } = require('../../utils/auth.js');
+// const asyncHandler = require('express-async-handler');
+// const { setTokenCookie } = require('../../utils/auth.js');
+// const { User } = require('../../db/models');
+// const { restoreUser } = require('../../utils/auth.js');
+// const { requireAuth } = require('../../utils/auth.js');
 
 const sessionRouter = require('./session.js');
 const usersRouter = require('./users.js');
+const artistRouter = require('./artists.js');
+const albumRouter = require('./albums.js');
+const trackRouter = require ('./tracks.js');
+
 
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
+router.use('/artist', artistRouter)
+router.use('/album', albumRouter)
+router.use('/track', trackRouter)
 
 
 //testing testing api routes to make sure they even post.
