@@ -1,7 +1,7 @@
 Place holder information.
 
 
-npx sequelize model:generate --name User --attributes username:string,email:string,hashedPassword:string
+npx sequelize model:generate --name User --attributes artistName:string,email:string,hashedPassword:string
 
 npx sequelize seed:generate --name demo-user
 

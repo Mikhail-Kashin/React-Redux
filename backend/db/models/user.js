@@ -48,6 +48,8 @@ module.exports = (sequelize, DataTypes) => {
   });
   User.associate = function(models) {
     // associations can be defined here
+    User.hasMany(models.Album, {foreignKey: 'artistId'})
+    User.hasMany(models.Track, {foreignKey: 'artistId'})
   };
 
   //safe info that can be passed into the JWT

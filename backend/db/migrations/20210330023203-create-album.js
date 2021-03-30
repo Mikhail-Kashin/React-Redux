@@ -12,7 +12,7 @@ module.exports = {
         type: Sequelize.INTEGER,
         allowNull: false,
         unique: true,
-        references: {model: 'Artists'}
+        references: {model: 'Users'}
       },
       name: {
         type: Sequelize.STRING(500),

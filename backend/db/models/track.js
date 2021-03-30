@@ -8,6 +8,8 @@ module.exports = (sequelize, DataTypes) => {
   }, {});
   Track.associate = function(models) {
     // associations can be defined here
+    Track.belongsTo(models.User, {foreignKey: 'artistId'})
+    Track.belongsTo(models.Album, {foreignKey: 'albumId'})
   };
   return Track;
 };
