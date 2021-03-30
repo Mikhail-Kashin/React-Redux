@@ -5,21 +5,21 @@ module.exports = {
     return queryInterface.bulkInsert('Albums', [
       {
         name: 'Classical Melancholy',
-        imgURL: 'Demo-lition',
+        imgUrl: 'Demo-lition',
         artistId: 1,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Scarlatti: Sonatas',
-        imgURL: 'Demo-lition',
+        imgUrl: 'Demo-lition',
         artistId: 2,
         createdAt: new Date(),
         updatedAt: new Date(),
       },
       {
         name: 'Hilary Hahn plays Bach',
-        imgURL: 'Demo-lition',
+        imgUrl: 'Demo-lition',
         artistId: 3,
         createdAt: new Date(),
         updatedAt: new Date(),

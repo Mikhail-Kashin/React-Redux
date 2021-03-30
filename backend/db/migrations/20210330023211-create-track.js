@@ -9,16 +9,22 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       artistId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: 'Users'}
       },
       albumId: {
-        type: Sequelize.INTEGER
+        type: Sequelize.INTEGER,
+        allowNull: false,
+        references: {model: 'Albums'}
       },
       name: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(500),
+        allowNull: false,
       },
       songUrl: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING(500),
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,
