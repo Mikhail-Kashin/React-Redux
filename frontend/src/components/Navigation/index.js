@@ -7,6 +7,7 @@ import './Navigation.css';
 
 function Navigation ({ isLoaded }){
   const sessionUser = useSelector(state => state.session.user);
+  console.log(isLoaded)
 
   let sessionLinks;
   if (sessionUser){
@@ -15,20 +16,18 @@ function Navigation ({ isLoaded }){
     );
   } else {
     sessionLinks = (
-      <>
+      <div className="loggedOutNavBar">
         <NavLink to='./login'>Log In</NavLink>
         <NavLink to='./signup'>Sign Up</NavLink>
-      </>
+      </div>
     );
   }
 
   return (
-    <ul>
-      <li>
+    <div className="loggedInNavBar">
         {isLoaded && sessionLinks}
-        <NavLink exact to='/'>Home</NavLink>
-      </li>
-    </ul>
+        {sessionUser ? <NavLink exact to='/'>Home</NavLink> : null}
+    </div>
   )
 }
 
