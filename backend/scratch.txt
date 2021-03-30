@@ -10,4 +10,12 @@ npx sequelize model:generate --name Album --attributes artistId:integer,name:str
 npx sequelize model:generate --name Track --attributes artistId:integer,albumId:integer,name:string,songUrl:string
 
 
+npx sequelize-cli seed:generate --name albumSeeds
+
+npx sequelize-cli seed:generate --name artistSeeds
+
+npx sequelize-cli seed:generate --name trackSeeds
+
+
+
 test
