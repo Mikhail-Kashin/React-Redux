@@ -4,7 +4,7 @@ const bcrypt = require('bcryptjs');
 
 module.exports = (sequelize, DataTypes) => {
   const User = sequelize.define('User', {
-    username: {
+    artistName: {
       type: DataTypes.STRING,
       allowNull: false,
       validate: {
@@ -54,8 +54,8 @@ module.exports = (sequelize, DataTypes) => {
 
   //safe info that can be passed into the JWT
   User.prototype.toSafeObject = function() {
-    const { id, username, email } = this;
-    return { id, username, email };
+    const { id, artistName, email } = this;
+    return { id, artistName, email };
   };
   //accepts password and return true or false if it matches USER instance hashedPassword
   User.prototype.validatePassword = function (password) {
@@ -72,7 +72,7 @@ module.exports = (sequelize, DataTypes) => {
     const user = await User.scope('loginUser').findOne({
       where: {
         [Op.or]: {
-          username: credential,
+          artistName: credential,
           email: credential,
         },
       },
@@ -81,12 +81,12 @@ module.exports = (sequelize, DataTypes) => {
       return await User.scope('currentUser').findByPk(user.id);
     }
   };
-  // accepts email, username, password and hashes password.
+  // accepts email, artistName, password and hashes password.
   //Then creates user with that information and returns the user to currentUser scope.
-  User.signup = async function ({ username, email, password }) {
+  User.signup = async function ({ artistName, email, password }) {
     const hashedPassword = bcrypt.hashSync(password);
     const user = await User.create({
-      username,
+      artistName,
       email,
       hashedPassword,
     });

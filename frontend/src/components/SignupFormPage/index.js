@@ -11,7 +11,7 @@ function SignupFormPage() {
   const dispatch = useDispatch();
   const sessionUser = useSelector(state => state.session.user);
   const [email, setEmail] = useState('');
-  const [username, setUsername] = useState('');
+  const [artistName, setArtistName] = useState('');
   const [password, setPassword] = useState('');
   const [confirmpassword, setConfirmpassword] = useState('');
   const [errors, setErrors] = useState([]);
@@ -22,7 +22,7 @@ function SignupFormPage() {
 
     e.preventDefault();
     const errors = setErrors([]);
-    return dispatch(sessionActions.signup({ email, username, password, confirmpassword }))
+    return dispatch(sessionActions.signup({ email, artistName, password, confirmpassword }))
       .catch(async (response) => {
         const signupData = await response.json();
         if (signupData && signupData.errors) setErrors(signupData.errors)
@@ -46,12 +46,12 @@ function SignupFormPage() {
           />
       </label>
       <label className='UsernameSignup'>
-        Username
+        artistName
         <input
         type='text'
-        placeholder='Username'
-        value={username}
-        onChange={(e) => setUsername(e.target.value)}
+        placeholder='artistName'
+        value={artistName}
+        onChange={(e) => setArtistName(e.target.value)}
         required
         />
       </label>

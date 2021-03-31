@@ -29,7 +29,7 @@ router.use('/track', trackRouter)
 // router.get('/set-token-cookie', asyncHandler(async (req, res) => {
 //   const user = await User.findOne({
 //       where: {
-//         username: 'Demo-lition'
+//         artistName: 'Demo-lition'
 //       },
 //     })
 //   setTokenCookie(res, user);
