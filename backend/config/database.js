@@ -1,14 +1,14 @@
 const config = require('./index');
 
 const db = config.db;
-const username = db.username;
+const artistName = db.artistName;
 const password = db.password;
 const database = db.database;
 const host = db.host;
 
 module.exports = {
   development: {
-    username,
+    artistName,
     password,
     database,
     host,

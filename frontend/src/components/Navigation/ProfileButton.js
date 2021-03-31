@@ -41,7 +41,7 @@ const logout = (e) => {
   </button>
   {showMenu && (
     <ul className='profile-dropdown'>
-      <li>{user.username}</li>
+      <li>{user.artistName}</li>
       <li>{user.email}</li>
       <li>
         <button onClick={logout}>Log Out</button>

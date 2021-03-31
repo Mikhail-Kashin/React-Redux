@@ -18,16 +18,16 @@ const validateSignup = [
     .exists({ checkFalsy: true })
     .isEmail()
     .withMessage('Please provide a valid email.'),
-  check('username')
+  check('artistName')
     .trim()
     .exists({ checkFalsy: true })
     .isLength({ min: 4 })
-    .withMessage('Please provide a username with at least 4 characters.'),
-  check('username')
+    .withMessage('Please provide a artistName with at least 4 characters.'),
+  check('artistName')
     .trim()
     .not()
     .isEmail()
-    .withMessage('Username cannot be an email.'),
+    .withMessage('artistName cannot be an email.'),
   check('password')
     .trim()
     .exists({ checkFalsy: true })
@@ -47,8 +47,8 @@ const validateSignup = [
 // if user is created the it sets the cookie and returns JSON response with user info.
 // else it will error into sequelize validation
 router.post( '/', validateSignup, asyncHandler(async (req, res) => {
-    const { email, password, username, confirmpassword } = req.body;
-    const user = await User.signup({ email, password, username, confirmpassword });
+    const { email, password, artistName, confirmpassword } = req.body;
+    const user = await User.signup({ email, password, artistName, confirmpassword });
 
     await setTokenCookie(res, user);
 
