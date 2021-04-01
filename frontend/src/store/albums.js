@@ -1,11 +1,11 @@
 import { csrfFetch } from './csrf';
 
-const SET_ALBUM = 'album/set';
+const SET_ALBUMS = 'album/set';
 const ADD_ALBUM = 'album/add';
 
 export const setAlbum = (album) => {
   return {
-    type: SET_ALBUM,
+    type: SET_ALBUMS,
     payload: album
   }
 }
@@ -19,7 +19,7 @@ export const addAlbum = (album) => {
 
 //thunks
 export const getAlbum = () => async dispatch => {
-  const response = await csrfFetch('api/album');
+  const response = await csrfFetch('/api/albums');
   if (!response.ok) {
     throw response
   }
@@ -33,7 +33,7 @@ const initialState = {};
 
 const albumReducer = (album = initialState, action) => {
   switch (action.type) {
-    case SET_ALBUM:
+    case SET_ALBUMS:
       const albums = action.payload;
       const newAlbums = {};
       for (const album of albums) {

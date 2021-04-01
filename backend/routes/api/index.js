@@ -15,7 +15,7 @@ const trackRouter = require ('./tracks.js');
 router.use('/session', sessionRouter);
 router.use('/users', usersRouter);
 router.use('/artist', artistRouter)
-router.use('/album', albumRouter)
+router.use('/albums', albumRouter)
 router.use('/track', trackRouter)
 
 

@@ -8,6 +8,7 @@ import LoginFormPage from './components/LoginFormPage';
 import SignupFormPage from './components/SignupFormPage';
 import ArtistPage from './components/ArtistPage';
 import Navigation from './components/Navigation';
+import AlbumWithTracks from './components/AlbumWithTracks';
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -28,8 +29,11 @@ function App() {
           <Route path='/signup'>
             <SignupFormPage />
           </Route>
-          <Route path='/album'>
+          <Route exact path='/album'>
             <AlbumPage />
+          </Route>
+          <Route path='/album/:albumId'>
+            <AlbumWithTracks />
           </Route>
           <Route path='/artist'>
             <ArtistPage />

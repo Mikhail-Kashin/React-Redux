@@ -19,3 +19,5 @@ npx sequelize-cli seed:generate --name trackSeeds
 
 
 test
+
+
