@@ -13,8 +13,9 @@ function LoginFormPage() {
   const [password, setPassword] = useState('');
   const [errors, setErrors] = useState([]);
 
+
   if (sessionUser) return (
-    <Redirect to="/artist" />
+    <Redirect to={`/artist/${sessionUser.id}`} /> //redirects to users artist page
   );
 
   const handleSubmit = (e) => {

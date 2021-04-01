@@ -9,6 +9,7 @@ import SignupFormPage from './components/SignupFormPage';
 import ArtistPage from './components/ArtistPage';
 import Navigation from './components/Navigation';
 import AlbumWithTracks from './components/AlbumWithTracks';
+import ArtistsWithAlbums from './components/ArtistsWithAlbums';
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -35,8 +36,11 @@ function App() {
           <Route path='/album/:albumId'>
             <AlbumWithTracks />
           </Route>
-          <Route path='/artist'>
+          <Route exact path='/artist'>
             <ArtistPage />
+          </Route>
+          <Route path ='/artist/:artistId'>
+            <ArtistsWithAlbums />
           </Route>
           <Route path='/track'>
             <TrackPage />

@@ -27,6 +27,16 @@ export const getAlbum = () => async dispatch => {
   dispatch(setAlbum(album));
 }
 
+export const getAlbumsByArtistId = (id) => async dispatch => {
+  console.log('.....>',id)
+  const response = await csrfFetch(`/api/artist/${id}`)
+  if (!response.ok) {
+    throw response
+  }
+  const artistAlbum = await response.json()
+  dispatch(setAlbum(artistAlbum))
+}
+
 
 
 const initialState = {};

@@ -1,17 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux'
 import { NavLink, Link, useParams } from 'react-router-dom'
-import { getTrackByAlbumId, getTrack } from '../../store/tracks'
+import { getTrackByAlbumId } from '../../store/tracks'
 
 
 
 function AlbumTrackPage() {
   const dispatch = useDispatch();
   const {albumId} = useParams();
-  const albums = useSelector(state => state.albums)
+  // const albums = useSelector(state => state.albums)
   const tracks = useSelector(state => state.tracks)
   // console.log('---------->',albums)
-  console.log('---------->',albums)
+  // console.log('---------->',albums)
 
 
   useEffect(() => {

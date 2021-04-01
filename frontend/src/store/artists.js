@@ -13,7 +13,7 @@ export const setArtist = (artist) => {
 
 //thunks
 export const getArtist = () => async dispatch => {
-  const response = await csrfFetch('api/artist');
+  const response = await csrfFetch('/api/artist');
   if (!response.ok) {
     throw response
   }
