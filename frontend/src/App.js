@@ -10,6 +10,7 @@ import ArtistPage from './components/ArtistPage';
 import Navigation from './components/Navigation';
 import AlbumWithTracks from './components/AlbumWithTracks';
 import ArtistsWithAlbums from './components/ArtistsWithAlbums';
+import HomePage from './components/HomePage';
 import * as sessionActions from "./store/session";
 
 function App() {
@@ -24,6 +25,9 @@ function App() {
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
+          <Route exact path='/' >
+            <HomePage />
+          </Route>
           <Route path='/login'>
             <LoginFormPage />
           </Route>

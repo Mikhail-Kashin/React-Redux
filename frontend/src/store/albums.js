@@ -28,7 +28,6 @@ export const getAlbum = () => async dispatch => {
 }
 
 export const getAlbumsByArtistId = (id) => async dispatch => {
-  console.log('.....>',id)
   const response = await csrfFetch(`/api/artist/${id}`)
   if (!response.ok) {
     throw response
@@ -37,11 +36,27 @@ export const getAlbumsByArtistId = (id) => async dispatch => {
   dispatch(setAlbum(artistAlbum))
 }
 
+export const createAlbum = (album) => async dispatch => {
+  const {name, imgUrl, artistId} = album;
+  const response = await csrfFetch(`/api/albums`, {
+    method: 'POST',
+    body: JSON.stringify({
+      name,
+      imgUrl,
+      artistId
+    }),
+  })
+  const albumData = await response.json()
+  dispatch(addAlbum(albumData));
+}
+
+
 
 
 const initialState = {};
 
 const albumReducer = (album = initialState, action) => {
+  let newAlbum;
   switch (action.type) {
     case SET_ALBUMS:
       const albums = action.payload;
@@ -51,7 +66,9 @@ const albumReducer = (album = initialState, action) => {
       }
       return newAlbums
     case ADD_ALBUM:
-      return
+       newAlbum = Object.assign({}, album);
+       newAlbum[action.payload.id] = action.payload;
+       return newAlbum;
     default:
       return album
   }

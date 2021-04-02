@@ -17,16 +17,18 @@ function Navigation ({ isLoaded }){
   } else {
     sessionLinks = (
       <div className="loggedOutNavBar">
-        <NavLink to='./login'>Log In</NavLink>
-        <NavLink to='./signup'>Sign Up</NavLink>
+        <p>
+        <NavLink to='/login'>Log In</NavLink>
+        </p>
+        <NavLink to='/signup'>Sign Up</NavLink>
       </div>
     );
   }
 
   return (
     <div className="loggedInNavBar">
-        {isLoaded && sessionLinks}
-        {sessionUser ? <NavLink exact to='/'>Home</NavLink> : null}
+        <NavLink className="navHomeButton" id="home" exact to='/'><img className="logoHome" src="https://user-images.githubusercontent.com/75585372/113439832-49b89b00-93b9-11eb-9670-5738be8fc0a1.png"></img></NavLink>
+        {sessionLinks}
     </div>
   )
 }

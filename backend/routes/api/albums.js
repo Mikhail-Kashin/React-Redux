@@ -27,10 +27,11 @@ router.get('/:id', asyncHandler(async (req, res) => { //gets tracks by album id
 
 
 router.post('/', asyncHandler(async (req, res) => {
-  const {name, imgUrl} = req.body;
+  const {name, imgUrl, artistId} = req.body;
   const album = await Album.create({
     name,
-    imgUrl
+    imgUrl,
+    artistId
   });
   res.json(album)
 }))

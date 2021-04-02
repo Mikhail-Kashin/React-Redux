@@ -1,0 +1,30 @@
+.allAlbums{
+  display: flex;
+  order: 1;
+  justify-content: left;
+  flex-direction: row;
+  background-color: whitesmoke;
+  margin-bottom: 8px;
+  margin-top: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 1px solid rgb(0,161,198);
+  border-left: none;
+}
+
+.albumLinkAlbumPage:link{
+  margin-top: 14px;
+  text-decoration: none;
+}
+
+.albumNameAlbumPage{
+  color: black;
+	font-size: 34px;
+	-webkit-text-stroke: 1px rgb(0,161,198);
+	-webkit-text-fill-color: white;
+}
+
+.albumNameAlbumPage:hover{
+  text-shadow: 1px 1px 3px black;
+  text-decoration: none;
+}

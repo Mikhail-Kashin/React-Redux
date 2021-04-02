@@ -5,6 +5,8 @@ import { getAlbum } from '../../store/albums'
 // import * as sessionActions from '../../store/session';
 // import { Redirect } from 'react-router-dom';
 
+import './AlbumPage.css'
+
 
 function AlbumPage() {
   const dispatch  = useDispatch();
@@ -21,13 +23,16 @@ function AlbumPage() {
 
   }, [dispatch]);
 
+
   const renderAlbums = () => {
     return Object.values(albums).map(album => {
+      console.log('---------------------->', album.artistId)
       return (
-        <li>
+        <div className='allAlbums'>
           {/* <link to={`/${album.id}/${track.id}`}>{album.name}</link> */}
-          <NavLink to={`/album/${album.id}`}>{album.name}</NavLink>
-        </li>
+          <NavLink to={`/artist/${album.artistId}`}><img src={album.imgUrl} alt="" className='albumPic'></img></NavLink>
+          <NavLink to={`/album/${album.id}`} className='albumLinkAlbumPage' ><span className='albumNameAlbumPage'>{album.name}</span> </NavLink>
+        </div>
       )
     })
   }

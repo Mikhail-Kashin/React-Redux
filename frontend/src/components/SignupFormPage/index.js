@@ -16,7 +16,10 @@ function SignupFormPage() {
   const [confirmpassword, setConfirmpassword] = useState('');
   const [errors, setErrors] = useState([]);
 
-  if (sessionUser) return ( <Redirect to='/' />);
+  if (sessionUser) return (
+    <Redirect to={`/artist/${sessionUser.id}`} /> //redirects to users artist page
+  );
+
 
   const handleSubmit = (e) => {
 
@@ -29,6 +32,7 @@ function SignupFormPage() {
       });
 
   }
+
 
   return (
     <form onSubmit={handleSubmit} className='SignupFormPage'>

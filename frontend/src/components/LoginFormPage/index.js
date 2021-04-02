@@ -16,7 +16,9 @@ function LoginFormPage() {
 
   if (sessionUser) return (
     <Redirect to={`/artist/${sessionUser.id}`} /> //redirects to users artist page
-  );
+  )
+
+  
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -34,12 +36,12 @@ function LoginFormPage() {
         {errors.map((error, idx) => <li key={idx}>{error}</li>)}
       </ul>
       <label className="usernameLogin">
-        Enter Username OR Email
+        Enter Email or Name
         <input
           type="text"
           value={credential}
           onChange={(e) => setCredential(e.target.value)}
-          placeholder='Username OR Email'
+          placeholder='Email or Name'
           required
         />
       </label>

@@ -30,6 +30,7 @@ link:hover{
 
 
 .loginFormPage{
+  padding-top: 80px;
   display: grid;
   grid-template-columns: 1fr auto 1fr ;
   grid-template-rows: auto;

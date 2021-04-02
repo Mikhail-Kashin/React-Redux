@@ -1,0 +1,90 @@
+body{
+  background-color: RGB(238, 238, 238);
+}
+
+.albumPic{
+  height: 100px;
+  width: 100px;
+}
+
+.ArtistAlbumPage{
+  margin-top: 800px;
+}
+
+
+.albums{
+  display: flex;
+  order: 1;
+  justify-content: left;
+  flex-direction: row;
+  background-color: whitesmoke;
+  margin-bottom: 8px;
+  margin-top: 3px;
+  padding-top: 1px;
+  padding-bottom: 1px;
+  border: 1px solid rgb(0,161,198);
+  border-left: none;
+}
+
+.albumName{
+  color: black;
+	font-size: 34px;
+	-webkit-text-stroke: 1px rgb(0,161,198);
+	-webkit-text-fill-color: white;
+}
+.albumName:hover{
+  text-shadow: 1px 1px 3px black;
+  text-decoration: none;
+}
+
+.albumLink:link {
+  margin-top: 14px;
+  text-decoration: none;
+}
+
+
+.newAlbumForm{
+  position: absolute;
+  bottom: 5px;
+  width: 100%;
+  flex-shrink: 0;
+  flex-direction: row;
+  background-color: whitesmoke;
+}
+
+.newAlbumForm input {
+  width: 100%;
+  clear: both;
+  background-color: rgb(245, 243, 243);
+  font-size: 14px;
+  height: 40px;
+  margin-top: 15px;
+  border: none;
+  border-radius: 4px;
+}
+
+.btnNewAlbum{
+  background: rgb(0,161,198);
+  color: white;
+  font-weight: bold;
+  text-align: center;
+  font-size: 16px;
+  border-radius: 4px;
+  border: none;
+  text-indent: 0px;
+}
+
+.btnNewAlbum:hover{
+  box-shadow: 1px 1px 3px black;
+}
+
+.btnNewAlbum:hover,
+link:hover{
+  text-shadow: 1px 1px 3px black;
+}
+
+
+[placeholder]:focus::-webkit-input-placeholder {
+  transition: opacity 1s 1s ease;
+  opacity: 0;
+}
